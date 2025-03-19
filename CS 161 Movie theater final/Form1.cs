@@ -80,24 +80,29 @@ namespace CS_161_Movie_theater_final
             List<string> tempGenres = genres.ToList();
             List<decimal> tempPrices = prices.ToList();
 
-              
-
 
             MessageBox.Show(tempNames.Count().ToString());
 
             // 1) Check if name search matches
+            string userInputName = searchBox.Text;
             for (int i = 0; i < tempNames.Count(); i++)
             {
-
+                if(!tempNames[i].Contains(userInputName))
+                {
+                    tempNames.RemoveAt(i);
+                    tempGenres.RemoveAt(i);
+                    tempPrices.RemoveAt(i);
+                    i--;
+                }
             }
 
 
             // 2) Check if price range is good
+            decimal userInputPrice = 100;
+            if (!decimal.TryParse(priceBox.Text, out userInputPrice)) userInputPrice = 100;
             for (int i = 0; i < tempNames.Count(); i++)
             {
-                decimal userInput = decimal.Parse(priceBox.Text);
-
-                if (tempPrices[i] > userInput)
+                if (tempPrices[i] > userInputPrice)
                 {
                     tempNames.RemoveAt(i);
                     tempGenres.RemoveAt(i);
@@ -145,9 +150,35 @@ namespace CS_161_Movie_theater_final
             int index = indexPairs[movieListbox.Items[movieListbox.SelectedIndex].ToString()];
             
             nameOutput.Text = movieNames[index];
-            costOutput.Text = prices[index].ToString();
+            costOutput.Text = prices[index].ToString("c");
             descriptionOutput.Text = descriptions[index];
-            
+
+            moviePoster.Image = Image.FromFile("pics/" + index + ".jpg");
+
+            pictureBox5.Visible = false;
+            pictureBox4.Visible = false;
+            pictureBox3.Visible = false;
+            pictureBox2.Visible = false;
+            pictureBox1.Visible = false;
+            switch (ratings[index])
+            {
+                case 5:
+                    pictureBox5.Visible = true;
+                    goto case 4;
+                case 4:
+                    pictureBox4.Visible = true;
+                    goto case 3;
+                case 3:
+                    pictureBox3.Visible = true;
+                    goto case 2;
+                case 2:
+                    pictureBox2.Visible = true;
+                    goto case 1;
+                case 1:
+                    pictureBox1.Visible = true;
+                    break;
+            }
         }
+        
     }
 }
