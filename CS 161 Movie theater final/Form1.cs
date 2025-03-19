@@ -76,9 +76,9 @@ namespace CS_161_Movie_theater_final
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            List<string> tempNames = movieNames;
-            List<string> tempGenres = genres;
-            List<decimal> tempPrices = prices;
+            List<string> tempNames = movieNames.ToList();
+            List<string> tempGenres = genres.ToList();
+            List<decimal> tempPrices = prices.ToList();
 
               
 
@@ -137,6 +137,8 @@ namespace CS_161_Movie_theater_final
         private void movieListbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             // int index = indexPairs["name"];
+
+
             int index = indexPairs[movieListbox.Items[movieListbox.SelectedIndex].ToString()];
             
             nameOutput.Text = movieNames[index];
