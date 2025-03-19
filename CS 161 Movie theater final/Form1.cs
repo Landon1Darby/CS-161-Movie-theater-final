@@ -121,12 +121,15 @@ namespace CS_161_Movie_theater_final
                 if (comedyCheck.Checked) genreList[2] = "Comedy";
                 if (famliyCheck.Checked) genreList[3] = "Family";
 
-                if (genreList[0] == genres[i] || 
-                    genreList[1] == genres[i] ||
-                    genreList[2] == genres[i] ||
-                    genreList[3] == genres[i]) 
+                if (!(genreList[0] == tempGenres[i] || 
+                    genreList[1] == tempGenres[i] ||
+                    genreList[2] == tempGenres[i] ||
+                    genreList[3] == tempGenres[i])) 
                 {
-                    
+                    tempNames.RemoveAt(i);
+                    tempGenres.RemoveAt(i);
+                    tempPrices.RemoveAt(i);
+                    i--;
                 }
             }
 
