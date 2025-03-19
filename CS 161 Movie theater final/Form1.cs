@@ -1,0 +1,20 @@
+namespace CS_161_Movie_theater_final
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+    }
+}
